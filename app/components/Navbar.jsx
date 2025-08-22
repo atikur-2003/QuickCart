@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { useSession, signOut } from 'next-auth/react'; // Import useSession and signOut
 
 const navLinks = [
+  { name: 'Home', href: '/' },
   { name: 'Products', href: '/products' },
   { name: 'Dashboard', href: '/dashboard/add-product' }, // Updated dashboard link
 ];
@@ -20,11 +21,11 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex items-center justify-between p-4 bg-gray-800 text-white shadow-lg">
+    <nav className="flex items-center justify-between px-4 lg:px-10 py-3 shadow-lg">
       {/* Brand/Title on the left */}
-      <div className="flex-grow">
-        <Link href="/" className="text-2xl font-bold text-white hover:text-gray-300 transition-colors duration-300">
-          My NextApp
+      <div>
+        <Link href="/" className="text-2xl font-bold transition-colors duration-300">
+          QuickCart
         </Link>
       </div>
 
@@ -32,7 +33,7 @@ const Navbar = () => {
       <div className="md:hidden">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="text-white focus:outline-none focus:text-gray-300"
+          
         >
           <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path
@@ -52,7 +53,7 @@ const Navbar = () => {
             <li key={link.name}>
               <Link
                 href={link.href}
-                className="text-lg text-white hover:text-gray-300 transition-colors duration-300"
+                className="text-lg transition-colors duration-300"
               >
                 {link.name}
               </Link>
@@ -66,14 +67,14 @@ const Navbar = () => {
         {status === 'authenticated' ? (
           <button
             onClick={handleLogout}
-            className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors duration-300"
+            className="px-4 py-1 border border-green-500 text-green-500 rounded-lg hover:bg-green-500 hover:text-white cursor-pointer transition"
           >
             Logout
           </button>
         ) : (
           <Link
             href="/login"
-            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-300"
+            className="px-4 py-1 border border-green-500 text-green-500 rounded-lg hover:bg-green-500 hover:text-white cursor-pointer transition"
           >
             Login
           </Link>
@@ -102,14 +103,14 @@ const Navbar = () => {
             {status === 'authenticated' ? (
               <button
                 onClick={handleLogout}
-                className="w-full px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors duration-300"
+                className="px-4 py-1 border border-green-500 text-green-500 rounded-lg hover:bg-green-500 hover:text-white cursor-pointer transition"
               >
                 Logout
               </button>
             ) : (
               <Link
                 href="/login"
-                className="w-full px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-300"
+                className="px-4 py-1 border border-green-500 text-green-500 rounded-lg hover:bg-green-500 hover:text-white cursor-pointer transition"
                 onClick={() => setIsOpen(false)}
               >
                 Login
