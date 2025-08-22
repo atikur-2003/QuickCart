@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -6,12 +7,12 @@ const ProductPage = ({product}) => {
     <div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col transition-transform duration-300 hover:scale-105">
       {/* Product Image at the top */}
       <div className="relative w-full h-48 sm:h-56 md:h-64">
-        {/* <Image
+        <Image
           src={product.image}
           alt={product.title}
           layout="fill"
           objectFit="cover"
-        /> */}
+        />
       </div>
       
       {/* Product Details */}
