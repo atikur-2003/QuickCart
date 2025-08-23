@@ -1,30 +1,29 @@
-// components/Navbar.jsx
 'use client';
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { useSession, signOut } from 'next-auth/react'; // Import useSession and signOut
+import { useSession, signOut } from 'next-auth/react'; 
 
 const navLinks = [
   { name: 'Home', href: '/' },
   { name: 'Products', href: '/products' },
-  { name: 'Dashboard', href: '/dashboard/add-product' }, // Updated dashboard link
+  { name: 'Dashboard', href: '/dashboard/add-product' }, 
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { data: session, status } = useSession(); // Use the useSession hook
+  const { data: session, status } = useSession();
 
   // Function to handle logout
   const handleLogout = async () => {
-    await signOut({ callbackUrl: '/' }); // Redirect to the home page after logout
+    await signOut({ callbackUrl: '/' }); 
   };
 
   return (
     <nav className="flex items-center justify-between px-4 lg:px-10 py-3 shadow-lg">
       {/* Brand/Title on the left */}
       <div>
-        <Link href="/" className="text-2xl font-bold transition-colors duration-300">
+        <Link href="/" className="text-3xl text-green-500 font-bold transition-colors duration-300">
           QuickCart
         </Link>
       </div>
@@ -67,14 +66,14 @@ const Navbar = () => {
         {status === 'authenticated' ? (
           <button
             onClick={handleLogout}
-            className="px-4 py-1 border border-green-500 text-green-500 rounded-lg hover:bg-green-500 hover:text-white cursor-pointer transition"
+            className="px-4 py-2 border border-green-500 text-green-500 rounded-lg hover:bg-green-500 hover:text-white cursor-pointer transition"
           >
             Logout
           </button>
         ) : (
           <Link
             href="/login"
-            className="px-4 py-1 border border-green-500 text-green-500 rounded-lg hover:bg-green-500 hover:text-white cursor-pointer transition"
+            className="px-4 py-2 border border-green-500 text-green-500 rounded-lg hover:bg-green-500 hover:text-white cursor-pointer transition"
           >
             Login
           </Link>
@@ -103,14 +102,14 @@ const Navbar = () => {
             {status === 'authenticated' ? (
               <button
                 onClick={handleLogout}
-                className="px-4 py-1 border border-green-500 text-green-500 rounded-lg hover:bg-green-500 hover:text-white cursor-pointer transition"
+                className="px-4 py-2 border border-green-500 text-green-500 rounded-lg hover:bg-green-500 hover:text-white cursor-pointer transition"
               >
                 Logout
               </button>
             ) : (
               <Link
                 href="/login"
-                className="px-4 py-1 border border-green-500 text-green-500 rounded-lg hover:bg-green-500 hover:text-white cursor-pointer transition"
+                className="px-4 py-2 border border-green-500 text-green-500 rounded-lg hover:bg-green-500 hover:text-white cursor-pointer transition"
                 onClick={() => setIsOpen(false)}
               >
                 Login

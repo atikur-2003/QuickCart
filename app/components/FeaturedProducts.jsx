@@ -62,7 +62,7 @@ const FeaturedProducts = () => {
 
     return (
         <div className="container mx-auto px-4 lg:px-10 py-10">
-      <h1 className="text-4xl font-bold text-center my-8">Featured Products</h1>
+      <h1 className="text-4xl font-bold text-green-500 text-center my-8">Featured Products</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {products.map((product) => (
           <ProductPage key={product.id} product={product}></ProductPage>

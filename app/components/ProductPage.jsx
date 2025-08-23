@@ -17,19 +17,19 @@ const ProductPage = ({product}) => {
       
       {/* Product Details */}
       <div className="p-4 flex-grow flex flex-col">
-        <h2 className="text-xl font-semibold text-gray-800 mb-2">
+        <h2 className="text-xl font-semibold text-green-500 mb-2">
           {product.title}
         </h2>
         <p className="text-gray-600 text-sm mb-4 flex-grow">
           {product.description}
         </p>
         <div className="mt-auto">
-          <p className="text-lg font-bold text-blue-600 mb-4">
+          <p className="text-lg font-bold text-green-600 mb-4">
             ${product.price.toFixed(2)}
           </p>
           <Link
             href={`/product-details/${product.id}`}
-            className="block text-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-300"
+            className="block text-center px-4 py-2 border border-green-500 text-green-500 rounded-lg hover:bg-green-500 hover:text-white cursor-pointer transition"
           >
             View Details
           </Link>

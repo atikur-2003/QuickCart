@@ -1,80 +1,76 @@
-'use client';
-
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import Image from 'next/image';
+"use client";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import Image from "next/image";
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-
-const slides = [
-  {
-    id: 1,
-    image: '/public/banner1.avif', // Replace with your image path
-    title: 'Discover Our Latest Products',
-    text: 'Explore our curated collection of high-quality items designed for you.',
-    buttonText: 'Shop Now',
-    buttonLink: '/products',
-  },
-  {
-    id: 2,
-    image: '/images/hero-2.jpg', // Replace with your image path
-    title: 'Unleash Your Potential',
-    text: 'Find the tools you need to succeed and elevate your everyday life.',
-    buttonText: 'Learn More',
-    buttonLink: '/about',
-  },
-  {
-    id: 3,
-    image: '/images/hero-3.jpg', // Replace with your image path
-    title: 'Quality and Elegance Combined',
-    text: 'Experience the perfect blend of style, durability, and craftsmanship.',
-    buttonText: 'View Details',
-    buttonLink: '/details',
-  },
-];
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 const HeroSlider = () => {
   return (
-    <div className="w-full h-[60vh] md:h-[80vh] relative">
-      <Swiper
-        modules={[Autoplay, Pagination, Navigation]}
-        spaceBetween={0}
-        slidesPerView={1}
-        loop={true}
-        autoplay={{
-          delay: 5000,
-          disableOnInteraction: false,
-        }}
-        pagination={{
-          clickable: true,
-        }}
-        navigation={true}
-        className="w-full h-full"
-      >
-        {slides.map((slide) => (
-          <SwiperSlide key={slide.id}>
-            <div className="relative w-full h-full">
+    <div className="w-full bg-base-100 pt-30 pb-10 px-4 md:px-10">
+      <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center gap-10">
+        {/* Left Content */}
+        <div className="md:w-1/2 space-y-6">
+          <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold">
+            Welcome to <span className="text-green-500">QuickCart</span>
+          </h1>
+          <p className="text-lg">
+            Buy your favorite product. We ensure quality and reasonable products.
+          </p>
+
+          {/* Search Box */}
+          <div className="flex items-center gap-2">
+            <input
+              type="text"
+              placeholder="Search meals..."
+              className="w-full px-4 py-2 border border-gray-300  rounded-xl shadow-sm focus:outline-none focus:border-2 focus:border-blue-500 "
+            />
+            <button className="px-4 py-2 border border-green-500 text-green-500 rounded-lg hover:bg-green-500 hover:text-white cursor-pointer transition">
+              Search
+            </button>
+          </div>
+        </div>
+
+        {/* Right Image */}
+        <div className="md:w-1/2 w-full">
+          <Carousel
+            autoPlay
+            infiniteLoop
+            showThumbs={false}
+            showStatus={false}
+            interval={3500}
+            showArrows={false}
+          >
+            <div style={{ height: '350px' }}> 
               <Image
-                src={slide.image}
-                alt={slide.title}
+                src="/banner1.jpeg"
+                alt="banner1"
                 layout="fill"
                 objectFit="cover"
-                priority={slide.id === 1}
               />
-              <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
-                <div className="text-center text-white p-6 max-w-2xl">
-                  <h1 className="text-3xl md:text-5xl font-bold mb-4">{slide.title}</h1>
-                  <p className="text-lg md:text-xl mb-6">{slide.text}</p>
-                
-                </div>
-              </div>
             </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+            <div style={{ height: '350px' }}> 
+              <Image
+                src="/banner2.jpeg"
+                alt="banner2"
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
+            <div style={{ height: '350px' }}> 
+              <Image
+                src="/banner3.jpeg"
+                alt="banner3"
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
+          </Carousel>
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,7 +1,9 @@
-export default async function ProductDetails({params}) {
-    const id = await params;
+import { notFound } from 'next/navigation';
+import Image from 'next/image';
 
-    const products = [
+export default async function ProductDetailsPage({ params }) {
+
+     const products = [
     {
       id: "1",
       image:
@@ -58,11 +60,48 @@ export default async function ProductDetails({params}) {
     },
   ];
 
-  if(products.id === id.id){
-    console.log('product id matched');
+  const productId = await params;
+
+  const product = products.find(p => p.id === productId.id);
+
+ 
+  if (!product) {
+    notFound();
   }
 
-  return <div>
-    {id.id}
-  </div>;
+  return (
+    <div className="container mx-auto px-5 lg:px-12 py-20">
+    <div className='text-center mb-10'>
+        <h1 className='text-3xl text-green-500 font-bold'>Product Details Here</h1>
+    </div>
+      <div className="flex flex-col md:flex-row gap-8">
+        {/* Product Image */}
+        <div className="md:w-1/2">
+          <div className="relative w-full h-96">
+            <Image
+              src={product.image}
+              alt={product.title}
+              layout="fill"
+              objectFit="cover"
+              className="rounded-lg shadow-md"
+            />
+          </div>
+        </div>
+
+        {/* Product Details */}
+        <div className="md:w-1/2">
+          <h1 className="text-2xl font-bold text-green-500 mb-4">{product.title}</h1>
+          <p className="text-gray-700 text-lg mb-6">{product.description}</p>
+          <div className="flex items-center gap-4 mb-6">
+            <p className="text-2xl font-bold text-green-600">${product.price.toFixed(2)}</p>
+          </div>
+          <button
+            className="px-4 py-2 border border-green-500 text-green-500 rounded-lg hover:bg-green-500 hover:text-white cursor-pointer transition0"
+          >
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 }
