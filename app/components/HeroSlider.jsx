@@ -12,7 +12,7 @@ import 'swiper/css/navigation';
 const slides = [
   {
     id: 1,
-    image: '/images/hero-1.jpg', // Replace with your image path
+    image: '/public/banner1.avif', // Replace with your image path
     title: 'Discover Our Latest Products',
     text: 'Explore our curated collection of high-quality items designed for you.',
     buttonText: 'Shop Now',

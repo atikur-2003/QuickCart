@@ -28,7 +28,7 @@ const ProductPage = ({product}) => {
             ${product.price.toFixed(2)}
           </p>
           <Link
-            href={`/products/${product._id}`}
+            href={`/product-details/${product.id}`}
             className="block text-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-300"
           >
             View Details

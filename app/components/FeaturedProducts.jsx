@@ -1,9 +1,9 @@
-// import getAllPosts from '@/lib/getAllData';
-import React from "react";
-import ProductPage from "../components/ProductPage";
+import React from 'react';
+import ProductPage from './ProductPage';
 
-export default async function Products() {
-  const products = [
+const FeaturedProducts = () => {
+
+    const products = [
     {
       id: "1",
       image:
@@ -60,14 +60,16 @@ export default async function Products() {
     },
   ];
 
-  return (
-     <div className="container mx-auto px-4 lg:px-10 py-10">
-      <h1 className="text-4xl font-bold text-center my-8">Our Products</h1>
+    return (
+        <div className="container mx-auto px-4 lg:px-10 py-10">
+      <h1 className="text-4xl font-bold text-center my-8">Featured Products</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {products.map((product) => (
           <ProductPage key={product.id} product={product}></ProductPage>
         ))}
       </div>
     </div>
-  );
-}
+    );
+};
+
+export default FeaturedProducts;
